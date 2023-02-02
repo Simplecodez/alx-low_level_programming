@@ -1,20 +1,17 @@
-/*
- * File: 0-whatsmyname.c
- * Auth: Timothy Victor
- */
-
 #include <stdio.h>
 
 /**
- * main - Prints the program name, followed by a new line.
- * @argc: The number of arguments supplied to the program.
- * @argv: An array of pointers to the arguments.
+ * main - entry point, prints file name of program
  *
- * Return: Always o.
+ * @argc: amount of cmd line arguments, starting with program name itself
+ *
+ * @argv: array of strings containing cmd line arguments
+ *
+ * Return: 0
  */
-int main(int __attribute__((__unused__)) argc, char *argv[])
-{
-	printf("%s\n", argv[0]);
 
+int main(int argc, char *argv[])
+{
+	printf("%s\n", argv[argc - 1]);
 	return (0);
 }

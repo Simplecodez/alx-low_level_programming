@@ -1,18 +1,13 @@
-/*
- * File: 5-sign.c
- * Auth: Timothy Victor
- */
-
-#include "main.h"
+#include "holberton.h"
 
 /**
- * print_sign - Prints the sign of a number.
- * @n: The number of which the sign will be printed.
+ * print_sign - prints the sign of a number.
  *
- * Return: 1 if the number is greater than zero,
- *         0 if the number is zero,
- *         -1 if the number is less than zero.
+ * @n: number to be tested
+ *
+ * Return: 1 if n > 0, 0 if n == 0, and -1 if n < 0.
  */
+
 int print_sign(int n)
 {
 	if (n > 0)
@@ -29,7 +24,5 @@ int print_sign(int n)
 	{
 		_putchar('-');
 		return (-1);
-}
-
-
+	}
 }

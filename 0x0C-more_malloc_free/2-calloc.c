@@ -1,36 +1,32 @@
-/*
- * File: 2-calloc.c
- * Auth: Timothy Victor
- */
-
-#include "main.h"
+#include "holberton.h"
 #include <stdlib.h>
 
 /**
- * _calloc - Allocate memory for array of nmemb elements of size bytes
- * @nmemb: Number of elemnts
- * @size: Size in bytes of elements
+ * _calloc - allocates memory for an array, using malloc.
+ * initializes all bytes to 0.
  *
- * Return: Pointer to new memory, NULL if it fails
+ * @nmemb: amount of members in the array
+ *
+ * @size: amount of bytes occupied by each member
+ *
+ * Return: NULL if either nmemb or size is 0, or if malloc fails
  */
+
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
-void *mem;
-	char *filler;
-	unsigned int index;
+	unsigned int i;
+	char *c;
 
 	if (nmemb == 0 || size == 0)
 		return (NULL);
 
-	mem = malloc(size * nmemb);
+	c = malloc(size * nmemb);
 
-	if (mem == NULL)
+	if (c == NULL)
 		return (NULL);
 
-	filler = mem;
+	for (i = 0; i < (size * nmemb); i++)
+		c[i] = 0;
 
-	for (index = 0; index < (size * nmemb); index++)
-		filler[index] = '\0';
-
-	return (mem);
+	return ((void *)c);
 }

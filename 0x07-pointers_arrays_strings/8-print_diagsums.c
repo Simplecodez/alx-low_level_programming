@@ -1,37 +1,36 @@
-/*
- * File: 8-print_diagsums.c
- * Auth: Timothy Victor
- */
-
-#include "main.h"
+#include "holberton.h"
 #include <stdio.h>
 
 /**
- * print_diagsums - prints the sum of the two diagonals of a square
- * matrix of integers
- * @a: pointer to the matrix
- * @size: size of square
+ * print_diagsums - prints the sum of the two diagonals
+ * of a square matrix of integers
+ *
+ * @a: pointer to 2D int array
+ *
+ * @size: members of "square" 2d array, in either dimension
  *
  * Return: void
  */
+
 void print_diagsums(int *a, int size)
 {
-	int i, sum1, sum2;
+	int i;
+	int sum_br = 0;
+	int sum_bl = 0;
+	int size_sq = size * size;
 
-	sum1 = 0;
-	sum2 = 0;
-
-	for (i = 0; i < size * size; i++)
+	for (i = 0; i < size_sq; i++)
 	{
 		if (i % (size + 1) == 0)
 		{
-			sum1 += a[i];
+/*			printf("br %i\n", a[i]);  */
+			sum_br += a[i];
 		}
-		if (i != 0 && i % (size - 1) == 0 && i < (size * size) - size + 1)
+		if (i % (size - 1) == 0 && (i > 0 && (i < (size_sq - 1))))
 		{
-			sum2 += a[i];
+/*			printf("bl %i\n", a[i]); */
+			sum_bl += a[i];
 		}
 	}
-
-	printf("%d, %d\n", sum1, sum2);
+	printf("%i, %i\n", sum_br, sum_bl);
 }

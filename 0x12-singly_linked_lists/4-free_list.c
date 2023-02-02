@@ -1,17 +1,27 @@
-#include <stdlib.h>
 #include "lists.h"
 
 /**
- * free_list - Free all malloced spaced of a list
- * @head: Pointer to the start of the list
+ * free_list - frees memory allocated to a struct type
+ * list_t linked list
+ *
+ * @head: pointer to first member of list
  */
+
 void free_list(list_t *head)
 {
-	if (head != NULL)
+	list_t *temp;
+
+	if (!head)
+		return;
+
+	while (head != NULL)
 	{
-		if (head->next != NULL)
-			free_list(head->next);
-		free(head->str);
-		free(head);
+/* point to current head */
+		temp = head;
+/* current head moves one member forward in list */
+		head = head->next;
+/* free string and stuct ptr alloc for previous head */
+		free(temp->str);
+		free(temp);
 	}
 }

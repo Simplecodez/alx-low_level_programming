@@ -1,23 +1,18 @@
-/*
- * File: 5-print_numbers.c
- * Auth: Timothy victor
- */
-
 #include <stdio.h>
 
 /**
- * main - Prints all single digit numbers of base 10 starting from 0.
+ * main - entry point
  *
- * Return: Always 0.
+ * Return: return 0 to complete
  */
 int main(void)
 {
-	int num;
+	int i;
 
-	for (num = 0; num < 10; num++)
-		printf("%d", num);
-
-	printf("\n");
-
+	for (i = 0; i < 10; i++)
+	{
+		printf("%i", i);
+	}
+	putchar('\n');
 	return (0);
 }

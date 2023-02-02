@@ -1,37 +1,37 @@
-/*
- * File: 7-leet.c
- * Auth: Timothy Victor
- */
-#include <string.h>
-#include "main.h"
+#include "holberton.h"
+#include <stdio.h>
 
 /**
- * leet - Encodes a string to 1337.
- * @str: The string to be encoded.
+ * leet - encodes a string into classsic 1337speak
  *
- * Return: A pointer to the encoded string.
+ * @stg: in this definiton, name of string to be modified,
+ *       but in protoype dedclaration, it is unnamed
+ *
+ * Return: modified string
  */
-char *leet(char *str)
+
+char *leet(char *stg)
 {
+	int i;
+	int j;
 
-int i, j, len;
-	char upper[6] = {'A', 'E', 'O', 'T', 'L'};
-	char lower[6] = {'a', 'e', 'o', 't', 'l'};
-	char num_to_replace[6] = {'4', '3', '0', '7', '1'};
+	char *rem = "aAeEoOtTlL";
+	char *rep = "43071";
 
-	len = strlen(str);
-
-	for (i = 0; i < len; i++)
+/* incrementing to end of stg */
+	for (i = 0; stg[i] != 0; i++)
 	{
-		for (j = 0; j < 5; j++)
+/* incrementing through string of replaceable chars */
+		for (j = 0; rem[j] != 0; j++)
 		{
-			if (str[i] == upper[j] || str[i] == lower[j])
+/* check if current postiion in stg is a replaceable char */
+			if (rem[j] == stg[i])
 			{
-				str[i] = num_to_replace[j];
+/* replace with corresponding char from 1337 string */
+				stg[i] = rep[(j / 2)];
 				break;
 			}
 		}
 	}
-
-	return (str);
+	return (stg);
 }

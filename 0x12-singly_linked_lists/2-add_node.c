@@ -1,28 +1,102 @@
-#include <stdlib.h>
 #include "lists.h"
-#include <string.h>
+#include <stdlib.h>
 
 /**
- * add_node - Add an element to a list at the front of the list
- * @head: Pointer to the pointer to the start of the list
- * @str: Pointer to the string to be put into the element of the list
+ * _strlen - returns the length of a string
  *
- * Return: Address of new element, or NULL if it failed
+ * @s: string to be measured
+ *
+ * Return: amount of chars in string
  */
+
+/* temporarily changed to const char * */
+
+int _strlen(const char *s)
+{
+	int length = 0;
+
+	for (; *s; s++)
+	{
+		length++;
+	}
+
+	return (length);
+}
+
+/**
+ * _strdup - returns a pointer to a newly allocated
+ * space in memory, which contains a copy of the string
+ * given as a parameter.
+ *
+ * @str: string to be copied and used to determine size of
+ * memory allocation
+ *
+ * Return: pointer to first address in the space created
+ * in memory
+ */
+
+/* temporarily changed to const char * */
+
+char *_strdup(const char *str)
+{
+	int size;
+	int i;
+	char *p;
+
+	if (!str)
+		return (NULL);
+
+	size = (_strlen(str) + 1);
+
+	p = malloc(sizeof(char) * size);
+	if (p == NULL)
+	{
+		return (NULL);
+	}
+
+	for (i = 0; i < size; i++)
+		p[i] = str[i];
+
+	return (p);
+}
+
+/**
+ * add_node - adds a new node at the start of a struct type list_t linked list
+ *
+ * @head: pointer to pointer to first member of list
+ *
+ * @str: string to be inlcuded as member str of new list_t struct node
+ *
+ * Return: address of new member, or NULL if failed
+ */
+
 list_t *add_node(list_t **head, const char *str)
 {
-	list_t *new;
-	unsigned int i;
+	list_t *new_node;
 
-	i = 0;
-	new = malloc(sizeof(list_t));
-	if (new == NULL)
+	if (!head && !str)
 		return (NULL);
-	new->str = strdup(str);
-	while (str[i] != '\0')
-		i++;
-	new->len = i;
-	new->next = *head;
-	*head = new;
-	return (*head);
+
+	new_node = malloc(sizeof(list_t));
+	if (!new_node)
+	{
+		free(new_node);
+		return (NULL);
+	}
+
+	new_node->str = _strdup(str);
+
+	if (!(new_node->str))
+	{
+		free(new_node);
+		return (NULL);
+	}
+
+	new_node->len = _strlen(new_node->str);
+
+	new_node->next = *head;
+
+	*head = new_node;
+
+	return (new_node);
 }

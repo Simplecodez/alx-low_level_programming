@@ -1,11 +1,12 @@
 #include <stdio.h>
-
-void printStatement(void) __attribute__ ((constructor));
+void print_first(void) __attribute__ ((constructor));
 
 /**
- * printStatement - Print out a statment, before main function
+ * print_first - using the constructor compiler attribute,
+ * prints a message before the main is executed
  */
-void printStatement(void)
+
+void print_first(void)
 {
 	printf("You're beat! and yet, you must allow,\n");
 	printf("I bore my house upon my back!\n");

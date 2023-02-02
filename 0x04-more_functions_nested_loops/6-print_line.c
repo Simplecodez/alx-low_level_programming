@@ -1,33 +1,23 @@
-/*
- * File: 6-print_line.c
- * Auth: Timothy victor
- */
-
-#include "main.h"
+#include "holberton.h"
 
 /**
- * print_line - Draws a straight line using the character _.
- * @n: The number of _ characters to be printed.
+ * print_line - draws a straight line in the terminal
+ *
+ * @n: input number, determines length of line in '_' segments
+ *
+ * Return: none
  */
+
 void print_line(int n)
-
 {
+	int segment;
 
-int lin;
-
-if (n > 0)
-
-{
-for (lin = 0; lin < n; lin++)
-
-_putchar('_');
-}
-
-_putchar('\n');
-
-
-
-
-
-
+	if (n > 0)
+	{
+		for (segment = 0; segment < n; segment++)
+		{
+			_putchar('_');
+		}
+	}
+	_putchar('\n');
 }

@@ -1,52 +1,70 @@
-/*
- * File: 2-str_concat.c
- * Auth: Timothy Victor
- */
-
-#include "main.h"
+#include "holberton.h"
+#include <stdlib.h>
 
 /**
- * str_concat - Concatenate (combine) two strings
- * @s1: First string
- * @s2: Second string
+ * _strlen - returns the length of a string
  *
- * Return: Pointer to new space in memory, NULL if it fails
+ * @s: string to be measured
+ *
+ * Return: amount of chars in string
  */
+
+int _strlen(char *s)
+{
+	int length = 0;
+
+	for (; *s; s++)
+	{
+		length++;
+	}
+	return (length);
+}
+
+/**
+ * str_concat - concatenates two strings
+ *
+ * @s1: first string to be copied to a new memory adress,
+ * minus terminal null byte
+ *
+ * @s2: second string to be copied to a memory adress
+ * immediately following the last address in the copied s1
+ *
+ * Return: pointer to first address in the space created
+ * in memory
+ */
+
 char *str_concat(char *s1, char *s2)
 {
-	char *s3, *empt;
-	int i, len1, len2, j;
+	int s1_len;
+	int s2_len;
+	int i;
+	char *p;
 
-	empt = "";
 	if (s1 == NULL)
-		s1 = empt;
+		s1_len = 0;
+	else
+		s1_len = _strlen(s1);
+
 	if (s2 == NULL)
-		s2 = empt;
-	i = len1 = len2 = 0;
-	while (s1[len1] != '\0')
-	{
-		len1++;
-	}
-	while (s2[len2] != '\0')
-	{
-		len2++;
-	}
-	len2++;
-	s3 = malloc((len1 + len2) * sizeof(*s1));
-	if (s3 == NULL)
+		s2_len = 0;
+	else
+		s2_len = _strlen(s2);
+/* malloc space for third string that is the combined length +1 for \0 */
+	p = malloc(sizeof(char) * ((s1_len + s2_len) + 1));
+
+	if (p == NULL)
 		return (NULL);
-	i = 0;
-	while (i < len1)
+
+	for (i = 0; i < s1_len; i++)
 	{
-		s3[i] = s1[i];
-		i++;
+		p[i] = s1[i];
 	}
-	j = 0;
-	while (j <= len2)
+	for (i = 0; i < s2_len; i++)
 	{
-		s3[i] = s2[j];
-		i++;
-		j++;
+		p[s1_len + i] = s2[i];
 	}
-	return (s3);
+/* append terminal null to concatenated string */
+	p[s1_len + s2_len] = '\0';
+
+	return (p);
 }

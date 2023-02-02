@@ -1,27 +1,28 @@
-/*
- * File: 4-rev_array.c
- * Auth: Timothy Victor
- */
-
-#include "main.h"
+#include "holberton.h"
+#include <stdio.h>
 
 /**
- * reverse_array - Reverses the content of an array of integers.
- * @a: The array of integers to be reversed.
- * @n: The number of elements in the array.
+ * reverse_array - reverses elements in non-string arrays
+ *
+ * @a: pointer to first element in array
+ *
+ * @n: number of elements in array to reverse
+ *
+ * Return: void
  */
+
 void reverse_array(int *a, int n)
-
 {
-	int i, j, k;
+	int i;
+	int j = 0;
+	int temp;
 
-	j = n - 1;
-
-	for (i = 0; i < n / 2; i++)
+/* starting at end of array and deincrementing down to halfway */
+	for (i = (n - 1); i >= (n / 2); i--, j++)
 	{
-		k = a[i];
+/* similar to string reverse, using temp variable to swap */
+		temp = a[i];
 		a[i] = a[j];
-		a[j--] = k;
-}
-
+		a[j] = temp;
+	}
 }

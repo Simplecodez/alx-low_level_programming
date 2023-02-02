@@ -1,46 +1,32 @@
-/*
- * File: 7-print_diagonal.c
- * Auth: Timothy Victor
- */
-
-#include "main.h"
+#include "holberton.h"
 
 /**
- * print_diagonal - Draws a diagonal line using the \ character.
- * @n: The number of \ characters to be printed.
+ * print_diagonal - draws a diagonal line on the terminal
+ *
+ * @n: input number, determines length of "hypotenuse" in '\' segments
+ *
+ * Return: none
  */
+
 void print_diagonal(int n)
 {
+	int segment;
+	int offset;
 
-int line;
-int space;
-
-if (n > 0)
-
-{
-
-for (line = 0; line < n; line++)
-
-{
-
-for (space = 0; space < line; space++)
-_putchar(' ');
-_putchar('\\');
-
-if (line == n - 1)
-continue;
-
-_putchar('\n');
-
-}
-
-
-}
-_putchar('\n');
-
-
-
-
-
-
+	if (n > 0)
+	{
+		for (segment = 0; segment < n; segment++)
+		{
+			for (offset = 0; offset < segment; offset++)
+			{
+				_putchar(' ');
+			}
+			_putchar('\\');
+			_putchar('\n');
+		}
+	}
+	else
+	{
+		_putchar('\n');
+	}
 }

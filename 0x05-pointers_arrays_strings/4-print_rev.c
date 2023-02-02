@@ -1,23 +1,35 @@
-/*
- * File: 4-print_rev.c
- * Auth: Timothy Victor
- */
-
-#include "main.h"
+#include "holberton.h"
 
 /**
- * print_rev - Prints a string in reverse.
- * @s: The string to be printed.
+ * print_rev - prints a string, in reverse, followed by a new line, to stdout
+ *
+ * @s: string to be printed
+ *
+ * Return: void
  */
+
 void print_rev(char *s)
 {
+	int i = 0;
+	char *st;
 
-int i = 0;
-
-	while (s[i])
+/* 2nd array may be unecessary, but insulating s from change */
+	st = s;
+/*
+ * adapting code form _strlen
+ * will it eventually be defined in other file??
+ * easier to just do:
+ * int i = (_strlen(s) -1);
+ */
+	for (; *st; st++)
+	{
 		i++;
-	while (i--)
+	}
+	i -= 1;
+/* end _strlen mimicry, use its value to drive next loop */
+	for (; i >= 0; i--)
+	{
 		_putchar(s[i]);
+	}
 	_putchar('\n');
-
 }

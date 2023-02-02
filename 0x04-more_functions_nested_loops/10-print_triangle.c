@@ -1,45 +1,38 @@
-/*
- * File: 10-print_triangle.c
- * Auth: Timothy Victor
- */
-
-#include "main.h"
+#include "holberton.h"
 
 /**
- * print_triangle - Prints a triangle, using the character #.
- * @size: The size of the triangle.
+ * print_triangle - draws a right triangle with hypotenuse to the left
+ *
+ * @size: determines both base and height, in rows/columns drawn with '#' tiles
+ *
+ * Return: none
  */
+
 void print_triangle(int size)
-
 {
-
-int hash;
-int index;
+	int row;
+	int col;
 
 	if (size > 0)
 	{
-		for (hash = 1; hash <= size; hash++)
+		for (row = 0; row < size; row++)
 		{
-			for (index = size - hash; index > 0; index--)
-				_putchar(' ');
-
-			for (index = 0; index < hash; index++)
-				_putchar('#');
-
-			if (hash == size)
-				continue;
-
+			for (col = 0; col < size; col++)
+			{
+				if ((row + col) < (size - 1))
+				{
+					_putchar(' ');
+				}
+				else
+				{
+					_putchar('#');
+				}
+			}
 			_putchar('\n');
 		}
 	}
-
-	_putchar('\n');
-
-
-
-
-
-
-
-
+	else
+	{
+		_putchar('\n');
+	}
 }

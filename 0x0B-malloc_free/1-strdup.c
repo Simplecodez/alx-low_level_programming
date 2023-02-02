@@ -1,38 +1,60 @@
-/*
- * File: 1-strdup.c
- * Auth: Timothy Victor
- */
-
-#include "main.h"
+#include "holberton.h"
+#include <stdlib.h>
 
 /**
- * _strdup - Returns a pointer to a newly-allocated space in memory
- *           containing a copy of the string given as parameter.
- * @str: The string to be copied.
+ * _strlen - returns the length of a string
  *
- * Return: If str == NULL or insufficient memory is available - NULL.
- *         Otherwise - a pointer to the duplicated string.
+ * @s: string to be measured
+ *
+ * Return: amount of chars in string
  */
+
+int _strlen(char *s)
+{
+	int length = 0;
+
+	for (; *s; s++)
+	{
+		length++;
+	}
+	return (length);
+}
+
+/**
+ * _strdup - returns a pointer to a newly allocated
+ * space in memory, which contains a copy of the string
+ * given as a parameter.
+ *
+ * @str: string to be copied and used to determine size of
+ * memory allocation
+ *
+ * Return: pointer to first address in the space created
+ * in memory
+ */
+
 char *_strdup(char *str)
 {
-	char *duplicate;
-	int index, len = 0;
+	int size;
+	int i;
+	char *p;
+
 
 	if (str == NULL)
 		return (NULL);
+/*
+ *	if (*str == '\0')
+ *		size = 1;
+ *	else
+ */
+	size = (_strlen(str) + 1);
 
-	for (index = 0; str[index]; index++)
-		len++;
+	p = malloc(sizeof(char) * size);
 
-	duplicate = malloc(sizeof(char) * (len + 1));
-
-	if (duplicate == NULL)
+	if (p == NULL)
 		return (NULL);
 
-	for (index = 0; str[index]; index++)
-		duplicate[index] = str[index];
+	for (i = 0; i < size; i++)
+		p[i] = str[i];
 
-	duplicate[len] = '\0';
-
-	return (duplicate);
+	return (p);
 }

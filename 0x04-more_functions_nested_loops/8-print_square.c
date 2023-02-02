@@ -1,42 +1,31 @@
-/*
- * File: 8-print_square.c
- * Auth: Timothy Victor
- */
-
-#include "main.h"
+#include "holberton.h"
 
 /**
- * print_square - Prints a squareusing the character #.
- * @size: The size of the square.
+ * print_square - draws a diagonal line on the terminal
+ *
+ * @size: determines length of square drawn in block of '#' tiles
+ *
+ * Return: none
  */
+
 void print_square(int size)
 {
+	int width;
+	int height;
 
-int height;
-int width;
-
-if (size <= 0)
-
-_putchar('\n');
-
-else
-
-{
-
-for (height = 0; height < size; height++)
-{
-
-for (width = 0; width < size; width++)
-_putchar('#');
-
-_putchar('\n');
-}
-
-}
-
-
-
-
-
-
+	if (size > 0)
+	{
+		for (height = 0; height < size; height++)
+		{
+			for (width = 0; width < size; width++)
+			{
+				_putchar('#');
+			}
+			_putchar('\n');
+		}
+	}
+	else
+	{
+		_putchar('\n');
+	}
 }

@@ -1,19 +1,14 @@
-/*
- * File: 3-get_op_func.c
- * Auth: Timothy Victor
- */
-
 #include "3-calc.h"
-#include <stdlib.h>
 
 /**
- * get_op_func - Selects the correct function to perform
- *               the operation asked by the user.
- * @s: The operator passed as argument.
+ * get_op_func - selects the correct function from struct type op named
+ * op_t to operate on two integers
  *
- * Return: A pointer to the function corresponding
- *         to the operator given as a parameter.
+ * @s: operator passed as argument
+ *
+ * Return: pointer to operator function, or NULL if error
  */
+
 int (*get_op_func(char *s))(int, int)
 {
 	op_t ops[] = {
@@ -24,10 +19,14 @@ int (*get_op_func(char *s))(int, int)
 		{"%", op_mod},
 		{NULL, NULL}
 	};
-	int i = 0;
+	int i;
 
-	while (ops[i].op != NULL && *(ops[i].op) != *s)
+	i = 0;
+	while (ops[i].op != NULL)
+	{
+		if (strcmp(s, ops[i].op) == 0)
+			return (ops[i].f);
 		i++;
-
-	return (ops[i].f);
+	}
+	return (NULL);
 }

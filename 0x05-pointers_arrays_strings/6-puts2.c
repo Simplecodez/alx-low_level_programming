@@ -1,23 +1,39 @@
-/*
- * File: 6-puts2.c
- * Auth: Timothy Victor
- */
-
-#include "main.h"
+#include "holberton.h"
 
 /**
- * puts2 - Prints one char out of two of a string.
- * @str: The string containing characters.
+ * puts2 - prints every other character of a string,
+ * starting with the first character, followed by a new line.
+ *
+ * @str: string to be selectively printed
+ *
+ * Return: void
  */
+
 void puts2(char *str)
 {
-	int index = 0, len = 0;
+	int i;
+	int length;
+	char *st;
+/*
+ * adapting code form _strlen
+ * will it eventually be defined in other file??
+ * easier to just do:
+ * int i = (_strlen(s) -1);
+ */
+	st = str;
+	for (length = 0; *st; st++)
+	{
+		length++;
+	}
+	length -= 1;
+/*
+ * end _strlen mimicry, use its value to limit next loop
+ */
 
-	while (str[index++])
-		len++;
-
-	for (index = 0; index < len; index += 2)
-		_putchar(str[index]);
-
+	for (i = 0; i <= length; i++)
+	{
+		if ((i % 2) == 0)
+			_putchar(str[i]);
+	}
 	_putchar('\n');
 }

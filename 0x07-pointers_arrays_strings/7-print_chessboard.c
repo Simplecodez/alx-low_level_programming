@@ -1,26 +1,28 @@
-/*
- * File: 7-print_chessboard.c
- * Auth: Timothy Victor
- */
-
-#include "main.h"
+#include "holberton.h"
+#include <stdio.h>
 
 /**
- * print_chessboard - prints the chessboard
- * @a: array of characters
+ * print_chessboard - prints an ASCII equivalent of a chessboard
+ *
+ * @a: array of 8 char strings that formats text into board
  *
  * Return: void
  */
+
 void print_chessboard(char (*a)[8])
 {
-	int j, k;
+	int i = 0;
+	int j = 0;
 
-	for (j = 0; j < 8; j++)
+	for (i = 0; i < 8; i++)
 	{
-		for (k = 0; k < 8; k++)
+		for (j = 0; j < 8; j++)
 		{
-			_putchar(a[j][k]);
+			_putchar(a[i][j]);
+			if (j == 7)
+			{
+				_putchar('\n');
+			}
 		}
-		_putchar('\n');
 	}
 }

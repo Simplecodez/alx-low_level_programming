@@ -1,17 +1,24 @@
 #include "lists.h"
 
 /**
- * free_listint - Frees a listint_t list.
- * @head: A pointer to the head of the listint_t list to be freed.
+ * free_listint - frees memory previously allocated to
+ * a struct list type listint_t
+ *
+ * @head: pointer to the first member of a singly linked list
+ * of structs of type listint_s
  */
+
 void free_listint(listint_t *head)
 {
-	listint_t *vic;
-
+	listint_t *temp;
+/*
+ * frees from beginning of list. do recursive solutions
+ * from end of list exist?
+ */
 	while (head)
 	{
-		vic = head->next;
-		free(head);
-		head = vic;
+		temp = head;
+		head = head->next;
+		free(temp);
 	}
 }

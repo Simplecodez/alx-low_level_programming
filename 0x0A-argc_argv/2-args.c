@@ -1,23 +1,26 @@
-/*
- * File: 2-args.c
- * Auth: Timothy Victor
- */
-
 #include <stdio.h>
 
 /**
- * main - Prints all arguments it receives.
- * @argc: The number of arguments supplied to the program.
- * @argv: An array of pointers to the arguments.
+ * main - entry point, prints all arguments it receives
  *
- * Return: Always 0.
+ * @argc: amount of cmd line arguments, starting with program name itself
+ *
+ * @argv: array of strings containing cmd line arguments
+ *
+ * Return: 0
  */
+
 int main(int argc, char *argv[])
 {
-	int arg;
+/*
+ * Done iteratively here. Is recursion possible if argc and argv
+ * wouldn't be taking from standard input on future stack frames?
+ */
+	int i;
 
-	for (arg = 0; arg < argc; arg++)
-		printf("%s\n", argv[arg]);
-
+	for (i = 0; i < argc; i++)
+	{
+		printf("%s\n", argv[i]);
+	}
 	return (0);
 }

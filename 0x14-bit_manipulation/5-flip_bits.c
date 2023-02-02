@@ -1,27 +1,42 @@
-/*
- * File: 5-flip_bits.c
- * Auth: Timothy Victor
- */
-
-#include "main.h"
+#include "holberton.h"
 
 /**
- * flip_bits - returns the number of bits you would
- * need to flip to get from oner number to another.
+ * flip_bits - returns the number of bits you would need to flip to
+ * change the binary notation of one number to another.
  *
- * @n: first number.
- * @m: seconde number.
- * Return: number of bits to be flipped.
+ * @n: first integer to be compared
+ *
+ * @m: second integer to be compared
+ *
+ * Return: amount of bits that differ between the two values
  */
+
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-	unsigned long int i = n ^ m;
-	unsigned int counter = 0;
+	int i, count = 0;
+	long int temp_n, temp_m;
+	long int diff;
 
-	while (i > 0)
+	if (n >= (unsigned long int)LONG_MIN)
 	{
-		counter++;
-		i &= (i - 1);
+		n -= (unsigned long int)LONG_MIN;
+		if (m >= (unsigned long int)LONG_MIN)
+		{
+			m -= (unsigned long int)LONG_MIN;
+		}
+		else
+			count++;
 	}
-	return (counter);
+
+	temp_n = (long int)n;
+	temp_m = (long int)m;
+	diff = temp_n ^ temp_m;
+
+	for (i = 0; i < 63; i++)
+	{
+		if ((diff >> i) & 1)
+			count++;
+	}
+
+	return (count);
 }

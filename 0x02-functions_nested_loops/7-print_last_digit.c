@@ -1,36 +1,19 @@
-/*
- * File: 7-print_last_digit.c
- * Auth: Timothy Victor
- */
-
-#include "main.h"
+#include "holberton.h"
 
 /**
- * print_last_digit - Prints the last digit of a number.
- * @n: The number in question.
+ * print_last_digit - prints the last digit of a number.
  *
- * Return: Value of the last digit.
+ * @n: number to be tested
+ *
+ * Return: value of last digit in int n
  */
 
 int print_last_digit(int n)
 {
+	int num = n % 10;
 
-int a;
-
-	if (n < 0)
-		n = -n;
-
-	a = n % 10;
-
-	if (a < 0)
-		a = -a;
-
-	_putchar(a + '0');
-
-	return (a);
-
-
-
-
+	if (num < 0)
+		num = num * -1;
+	_putchar(num + '0');
+	return (num);
 }
-

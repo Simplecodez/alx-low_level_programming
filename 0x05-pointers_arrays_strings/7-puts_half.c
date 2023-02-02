@@ -1,29 +1,50 @@
-/*
- * File: 7-puts_half.c
- * Auth: Timothy Victor
- */
-
-#include "main.h"
+#include "holberton.h"
 
 /**
- * puts_half - Prints half of a string.
- * @str: The string to be printed.
+ * puts_half - prints second half of a string, followed by a new line
+ *
+ * @str: string to be selectively printed
+ *
+ * Return: void
  */
+
 void puts_half(char *str)
 {
-	int index = 0, len = 0, n;
+	int i;
+	int length;
+	char *st;
+/*
+ * adapting code form _strlen
+ * will it eventually be defined in other file??
+ * easier to just do:
+ * int i = (_strlen(s) -1);
+ */
+	st = str;
+	for (length = 0; *st; st++)
+	{
+		length++;
+	}
+/*
+ * end _strlen mimicry, use its value to limit next loop
+ */
 
-	while (str[index++])
-		len++;
 
-	if ((len % 2) == 0)
-		n = len / 2;
-
-	else
-		n = (len + 1) / 2;
-
-	for (index = n; index < len; index++)
-		_putchar(str[index]);
-
+/* cycle through str positions */
+	for (i = 0; i < length; i++)
+	{
+		/* print last half if length is even */
+		if ((length % 2) == 0)
+		{
+			if (i >= (length / 2))
+			{
+				_putchar(str[i]);
+			}
+		}
+		/* print last (length - 1) / 2 if length is odd */
+		else if (i >= (length - ((length - 1) / 2)))
+		{
+			_putchar(str[i]);
+		}
+	}
 	_putchar('\n');
 }

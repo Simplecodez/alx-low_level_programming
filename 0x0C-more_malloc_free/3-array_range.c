@@ -1,36 +1,33 @@
-/*
- * File: 3-array_range.c
- * Auth: Timothy Victor
- */
-
-#include "main.h"
+#include "holberton.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 /**
- * array_range - Create array of integers filled with numbers from min to max
- * @min: First number in the array
- * @max: Largest number in the array
+ * array_range - creates an array of integers, which contains
+ * min and max, plus all the values between them, in order
  *
- * Return: Pointer to new array, NULL if failed
+ * @min: lowest int value in array
+ *
+ * @max: highest in value in array
+ *
+ * Return: pointer to the created int array, NULL if either
+ * min is greater than max, or if malloc fails
  */
+
 int *array_range(int min, int max)
 {
-int *array, index, size;
+	int i;
+	int *arr;
 
 	if (min > max)
 		return (NULL);
 
-	size = max - min + 1;
+	arr = malloc(sizeof(int) * ((max - min) + 1));
 
-	array = malloc(sizeof(int) * size);
-
-	if (array == NULL)
+	if (arr == NULL)
 		return (NULL);
 
-	for (index = 0; index < size; index++)
-		array[index] = min++;
+	for (i = 0; i < ((max - min) + 1); i++)
+		arr[i] = (min + i);
 
-	return (array);
-
+	return (arr);
 }

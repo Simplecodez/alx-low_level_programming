@@ -1,39 +1,39 @@
-/*
- * File: 6-is_prime_number.c
- * Auth: Brennan D Baraban
- */
-
-#include "main.h"
-
-int check_prime(int n, int i);
+#include "holberton.h"
+#include <stdio.h>
 
 /**
- * is_prime_number - checks if a number is prime
- * @n: the number to check
+ * find_pr - recursive helper of is_prime_number, adds second variable
+ * to increment factors to compare against n
  *
- * Return: 1 if numberis prime and 0 if not
+ * @div: sucessive candidates for factors of n
+ *
+ * @n: number to be checked for prime
+ *
+ * Return: 1 if n is prime, or 0 if not
  */
-int is_prime_number(int n)
+
+int find_pr(int div, int n)
 {
-	if (n <= 1)
+	if (div == 1)
+		return (1);
+	else if (n % div == 0)
 		return (0);
 	else
-		return (check_prime(n, 2));
+		return (find_pr(div - 1, n));
 }
 
 /**
- * check_prime - checks if a number is prime number
- * @n: the number to check
- * @i: start
+ * is_prime_number - tests if n is prime through a recursive helper
  *
- * Return: 1 if number is prime and 0 otherwise
+ * @n: number to be checked for prime
+ *
+ * Return: 1 if n is prime, or 0 if not
  */
-int check_prime(int n, int i)
+
+int is_prime_number(int n)
 {
-	if (i > n / 2)
-		return (1);
-	else if (n % i == 0)
+	if (n < 2)
 		return (0);
 	else
-		return (check_prime(n, i + 1));
+		return (find_pr((n / 2), n));
 }

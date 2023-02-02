@@ -1,23 +1,16 @@
-/*
- * File: 10-add.c
- * Auth: Timothy Victor
- */
-
-#include "main.h"
+#include "holberton.h"
 
 /**
- * add - Adds two integers.
- * @a: The first integer to be added.
- * @b: The second integer to be added.
+ * add - adds two integers and returns the result.
  *
- * Return: The result of the addition.
+ * @a: first integer
+ *
+ * @b: second integer
+ *
+ * Return: sum of both integer args
  */
 
 int add(int a, int b)
 {
-	int c;
-
-	c = a + b;
-
-	return (c);
+	return (a + b);
 }

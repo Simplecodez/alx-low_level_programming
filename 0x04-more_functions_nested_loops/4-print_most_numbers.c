@@ -1,32 +1,25 @@
-/*
- * File: 4-print_most_numbers.c
- * Auth: Timothy Victor
- */
-
-#include "main.h"
+#include "holberton.h"
 
 /**
- * print_most_numbers - Prints the numbers from 0-9 except for 2 and 4.
+ * print_most_numbers - prints numbers 0 to 9, except 2 and 4, then new line
+ *
+ * Return: none
  */
+
 void print_most_numbers(void)
-
 {
+	int i;
 
-int k;
-
-for (k = 0; k <= 9; k++)
-
-{
-if (k != 2 && k != 4)
-
-{
-_putchar(k + '0');
-}
-
-}
-
-_putchar('\n');
-
-
-
+	for (i = 0; i < 10; i++)
+	{
+		if (i == 2 || i == 4)
+		{
+			continue;
+		}
+		else
+		{
+			_putchar(i + '0');
+		}
+	}
+	_putchar('\n');
 }

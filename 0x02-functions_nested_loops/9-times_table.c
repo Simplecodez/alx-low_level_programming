@@ -1,37 +1,41 @@
-/*
- * File: 9-times_table.c
- * Auth: Timothy Victor
- */
-
-#include "main.h"
+#include "holberton.h"
 
 /**
- * times_table - Prints the 9 times table, starting with 0.
+ * times_table - prints the 9 times table, starting with 0.
+ *
+ * Return: void
  */
+
 void times_table(void)
 {
-	int num, mult, prod;
+	int base, mult;
 
-	for (num = 0; num <= 9; num++)
+	for (base = 0; base < 10; base++)
 	{
-		_putchar('0');
-
-		for (mult = 1; mult <= 9; mult++)
+		for (mult = 0; mult < 10; mult++)
 		{
-			_putchar(',');
-			_putchar(' ');
-
-			prod = num * mult;
-
-			if (prod <= 9)
-				_putchar(' ');
+			if ((base * mult) < 10)
+			{
+				_putchar((base * mult) + '0');
+			}
 			else
-				_putchar((prod / 10) + '0');
-
-			_putchar((prod % 10) + '0');
+			{
+				_putchar(((base * mult) / 10) + '0');
+				_putchar(((base * mult) % 10) + '0');
+			}
+			if (mult == 9)
+			{
+				_putchar('\n');
+			}
+			else
+			{
+				_putchar(',');
+				_putchar(' ');
+				if ((base * (mult + 1)) < 10)
+				{
+					_putchar(' ');
+				}
+			}
 		}
-		_putchar('\n');
 	}
-
-
 }

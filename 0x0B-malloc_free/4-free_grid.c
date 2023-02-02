@@ -1,26 +1,25 @@
-/*
- * File: 4-free_grid.c
- * Auth: Brennan D Baraban
- */
-
-#include "main.h"
+#include "holberton.h"
+#include <stdlib.h>
 
 /**
- * free_grid - Free memory allocated to a previoiusly created 2D array
- * @grid: The 2D array to free memory from
- * @height: The height of the 2D array
+ * free_grid - frees memory allocated to a 2 dimensional array
+ * previously created by the alloc_grid function
  *
- * Return: Nothing
+ * @grid: pointer to 2 dimensional array created by alloc_grid
+ *
+ * @height: amount of arrays arrayed to grid**, also amount of
+ * values printed in each column
+ *
+ * Return: void
  */
+
 void free_grid(int **grid, int height)
 {
 	int i;
 
-	i = 0;
-	while (i < height)
+	for (i = 0; i < height; i++)
 	{
 		free(grid[i]);
-		i++;
 	}
 	free(grid);
 }

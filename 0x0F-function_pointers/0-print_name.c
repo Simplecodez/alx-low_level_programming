@@ -1,19 +1,17 @@
-/*
- * File: 0-print_name.c
- * Auth: Brennan D Baraban
- */
-
 #include "function_pointers.h"
 
 /**
- * print_name - Prints a name.
- * @name: The name to be printed.
- * @f: A pointer to a function that prints a name.
+ * print_name - applies name printing function f to string name
+ *
+ * @name: string containing name
+ *
+ * @f: pointer to function that formats and prints name
  */
+
 void print_name(char *name, void (*f)(char *))
 {
-	if (name == NULL || f == NULL)
+	if (name && f)
+		f(name);
+	else
 		return;
-
-	f(name);
 }
